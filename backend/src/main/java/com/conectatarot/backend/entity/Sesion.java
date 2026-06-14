@@ -46,6 +46,12 @@ public class Sesion {
     @Column(name = "fecha_creacion", nullable = false)
     private LocalDateTime fechaCreacion;
 
+    @Column(name = "estado_pago", length = 20)
+    private String estadoPago = "PENDIENTE";
+
+    @Column(name = "token_webpay")
+    private String tokenWebpay;
+
     @PrePersist
     public void prePersist() {
         this.fechaCreacion = LocalDateTime.now();
