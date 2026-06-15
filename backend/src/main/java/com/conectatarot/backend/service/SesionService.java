@@ -245,6 +245,7 @@ public class SesionService {
                 .duracionMinutos(sesion.getDuracionMinutos())
                 .precioTotal(sesion.getPrecioTotal())
                 .estado(sesion.getEstado())
+		.estadoPago(sesion.getEstadoPago())
                 .build();
     }
 }

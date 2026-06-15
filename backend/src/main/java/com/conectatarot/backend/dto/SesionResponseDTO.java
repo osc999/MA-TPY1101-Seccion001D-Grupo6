@@ -19,4 +19,5 @@ public class SesionResponseDTO {
     private Integer duracionMinutos;
     private BigDecimal precioTotal;
     private String estado;
+    private String estadoPago;
 }
