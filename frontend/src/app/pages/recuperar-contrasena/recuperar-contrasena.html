@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="card">
+
+    <h1>🔒 Recuperar contraseña</h1>
+    <p class="subtitle">Introduce tu correo para recibir instrucciones</p>
+
+    <input type="email" placeholder="Correo electrónico" [(ngModel)]="email" />
+
+    <button (click)="sendRecovery()">Enviar enlace de recuperación</button>
+
+    <p class="info" *ngIf="message">{{ message }}</p>
+
+    <button type="button" class="secondary" (click)="backToLogin()">Volver al login</button>
+
+  </div>
+</div>

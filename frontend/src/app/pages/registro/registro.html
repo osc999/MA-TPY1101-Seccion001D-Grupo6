@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card">
+
+    <h1>📝 Registro</h1>
+    <p class="subtitle">Crea tu cuenta</p>
+
+    <input type="text" placeholder="Nombre completo" [(ngModel)]="nombre" />
+
+    <input type="email" placeholder="Correo electrónico" [(ngModel)]="email" />
+
+    <input type="tel" placeholder="Teléfono" [(ngModel)]="telefono" />
+
+    <input type="password" placeholder="Contraseña" [(ngModel)]="password" />
+
+    <input type="password" placeholder="Confirmar contraseña" [(ngModel)]="confirmPassword" />
+
+    <label class="role-label">Selecciona rol</label>
+    <select [(ngModel)]="rol">
+      <option value="CLIENTE">Cliente</option>
+      <option value="TAROTISTA">Tarotista</option>
+    </select>
+
+    <button (click)="register()">Registrarse</button>
+
+    <p class="info" *ngIf="message">{{ message }}</p>
+
+    <button type="button" class="secondary" (click)="backToLogin()">Volver al login</button>
+
+  </div>
+</div>

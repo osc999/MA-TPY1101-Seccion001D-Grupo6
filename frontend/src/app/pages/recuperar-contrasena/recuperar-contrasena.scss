@@ -9,27 +9,17 @@
 .card {
   width: 90%;
   max-width: 400px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
   padding: 2rem;
   border-radius: 20px;
   color: white;
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  margin-bottom: 1.5rem;
-  opacity: 0.8;
-}
-
 input {
   display: block;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
   padding: 0.8rem;
   margin-bottom: 1rem;
@@ -40,7 +30,6 @@ input {
 button {
   display: block;
   width: 100%;
-  max-width: 100%;
   box-sizing: border-box;
   padding: 0.8rem;
   border: none;
@@ -51,25 +40,14 @@ button {
   cursor: pointer;
 }
 
-.login-actions {
-  display: grid;
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
 button.secondary {
+  margin-top: 0.75rem;
   padding: 0.65rem;
-  font-size: 0.95rem;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: white;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-button.secondary:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.error {
-  color: #ff6b6b;
+.info {
   margin-top: 1rem;
+  color: #bde0fe;
 }

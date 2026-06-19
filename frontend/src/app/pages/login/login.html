@@ -18,6 +18,11 @@
 
     <button (click)="login()">Iniciar sesión</button>
 
+    <div class="login-actions">
+      <button type="button" class="secondary" (click)="goToRecover()">Recuperar contraseña</button>
+      <button type="button" class="secondary" (click)="goToRegister()">¿No tienes cuenta? Registrarse</button>
+    </div>
+
     <p class="error" *ngIf="error">{{ error }}</p>
 
   </div>

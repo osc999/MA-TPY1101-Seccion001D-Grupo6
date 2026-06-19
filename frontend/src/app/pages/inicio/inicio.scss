@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #3a0ca3, #7209b7);
+}
+
+.card {
+  width: 90%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.25rem;
+}

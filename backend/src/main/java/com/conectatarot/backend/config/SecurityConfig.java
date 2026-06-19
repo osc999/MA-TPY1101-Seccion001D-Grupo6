@@ -45,16 +45,23 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests(auth -> auth
-        	        .requestMatchers("/api/auth/login",
-        	       		 "/api/auth/google",
-		       		 "/api/usuarios",
-				 "/api/pagos/**",
-                                 "/api/tarotistas/**"
-                )
-                        .permitAll()
-                        .anyRequest()
-                        .authenticated()
-                )
+    .requestMatchers(
+        "/",
+        "/index.html",
+        "/favicon.ico",
+        "/assets/**",
+        "/*.js",
+        "/*.css",
+
+        "/api/auth/login",
+        "/api/auth/google",
+        "/api/usuarios",
+        "/api/pagos/**"
+    )
+    .permitAll()
+    .anyRequest()
+    .authenticated()
+)
 
                 .addFilterBefore(
                         jwtAuthFilter,

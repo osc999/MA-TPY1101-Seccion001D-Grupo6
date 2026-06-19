@@ -14,16 +14,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import com.conectatarot.backend.repository.UsuarioRepository;
 import com.conectatarot.backend.repository.RolRepository;
-import com.conectatarot.backend.dto.RegistroTarotistaRequest;
-
-import com.conectatarot.backend.entity.Usuario;
-
-import com.conectatarot.backend.service.UsuarioService;
-import com.conectatarot.backend.service.TarotistaEspecialidadService;
-import com.conectatarot.backend.service.DisponibilidadTarotistaService;
-
-import java.util.Map;
-
 
 import java.util.List;
 
@@ -35,72 +25,6 @@ public class TarotistaController {
     private final TarotistaService tarotistaService;
     private final UsuarioRepository usuarioRepository;
     private final RolRepository rolRepository;
-    private final UsuarioService usuarioService;
-    private final TarotistaEspecialidadService tarotistaEspecialidadService;
-    private final DisponibilidadTarotistaService disponibilidadTarotistaService;
-
-
-
-    @PostMapping("/registro")
-        public ResponseEntity<?> registrarTarotista(
-                @RequestBody RegistroTarotistaRequest request
-        ) {
-
-        Usuario usuario = new Usuario();
-                usuario.setNombre(request.getNombre());
-                usuario.setEmail(request.getEmail());
-                usuario.setPassword(request.getPassword());
-
-        usuario = usuarioService.registrarUsuario(usuario);
-
-        Tarotista tarotista = tarotistaService.crearTarotista(
-                usuario.getIdUsuario(),
-                request.getNombreProfesional()
-        );
-
-        tarotista = tarotistaService.actualizarPerfil(
-                tarotista.getId(),
-                usuario.getEmail(),
-                request.getDescripcion(),
-                request.getPrecioBase()
-        );
-
-        usuario.setRol(
-                rolRepository.findByNombreRol("TAROTISTA")
-                        .orElseThrow()
-        );
-
-        usuarioRepository.save(usuario);
-
-        for(Integer especialidadId : request.getEspecialidades()) {
-
-                tarotistaEspecialidadService.agregarEspecialidad(
-                        tarotista.getId(),
-                        especialidadId
-                );
-        }
-
-        if(request.getDisponibilidades() != null) {
-
-        for(var d : request.getDisponibilidades()) {
-
-                disponibilidadTarotistaService.crearDisponibilidad(
-                        tarotista.getId(),
-                        d.getDiaSemana(),
-                        d.getHoraInicio(),
-                        d.getHoraFin()
-                );
-        }
-        }
-        
-
-        return ResponseEntity.ok(
-                Map.of(
-                        "success", true,
-                        "message", "Tarotista registrado correctamente"
-                )
-        );
-        }
 
     @PostMapping
     public ResponseEntity<ApiResponse<Tarotista>> crearTarotista(

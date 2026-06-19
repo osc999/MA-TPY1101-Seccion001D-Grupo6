@@ -26,20 +26,19 @@ export class Login {
     this.authService.login(this.email, this.password).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.token);
-
-        const rol = res.rol || res.usuario?.rol?.nombreRol;
-
-        if (rol === 'CLIENTE') {
-          this.router.navigate(['/cliente']);
-        } else if (rol === 'TAROTISTA') {
-          this.router.navigate(['/tarotista']);
-        } else {
-          this.router.navigate(['/admin']);
-        }
+        this.router.navigate(['/inicio']);
       },
       error: () => {
         this.error = 'Credenciales incorrectas';
       }
     });
+  }
+
+  goToRecover() {
+    this.router.navigate(['/recuperar-contraseña']);
+  }
+  
+  goToRegister() {
+    this.router.navigate(['/registro']);
   }
 }
