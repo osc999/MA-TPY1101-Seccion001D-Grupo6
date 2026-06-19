@@ -11,6 +11,8 @@ public interface TarotistaRepository extends JpaRepository<Tarotista, Integer> {
 
     List<Tarotista> findByEstadoIgnoreCase(String estado);
 
+    long countByEstadoIgnoreCase(String estado);
+
     List<Tarotista> findByEstadoIgnoreCaseAndTarotistaEspecialidades_Especialidad_NombreContainingIgnoreCase(
             String estado,
             String especialidad
