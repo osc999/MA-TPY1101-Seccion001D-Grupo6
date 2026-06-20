@@ -82,9 +82,9 @@ public class UsuarioService {
                     sesionRepository.deleteAll(sesionRepository.findByTarotista_Id(tarotista.getId()));
                     // 2. Eliminar especialidades del tarotista
                     tarotistaEspecialidadRepository.deleteAll(tarotistaEspecialidadRepository.findByTarotista_Id(tarotista.getId()));
-                    // 3. Eliminar disponibilidad (buscamos por tarotistaId)
+                    // 3. Eliminar disponibilidad (acceder a través de la relación Tarotista)
                     disponibilidadTarotistaRepository.deleteAll(disponibilidadTarotistaRepository.findAll().stream()
-                            .filter(d -> d.getTarotistaId().equals(tarotista.getId()))
+                            .filter(d -> d.getTarotista().getId().equals(tarotista.getId()))
                             .toList());
                     // 4. Eliminar el perfil de tarotista
                     tarotistaRepository.delete(tarotista);
@@ -97,3 +97,4 @@ public class UsuarioService {
         usuarioRepository.delete(usuario);
     }
 }
+
