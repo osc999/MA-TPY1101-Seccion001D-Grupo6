@@ -5,7 +5,7 @@ import com.conectatarot.backend.entity.Usuario;
 import com.conectatarot.backend.exception.NotFoundException;
 import com.conectatarot.backend.repository.RolRepository;
 import com.conectatarot.backend.repository.UsuarioRepository;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -16,11 +16,11 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final RolRepository rolRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public UsuarioService(UsuarioRepository usuarioRepository,
                           RolRepository rolRepository,
-                          BCryptPasswordEncoder passwordEncoder) {
+                          PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
         this.rolRepository = rolRepository;
         this.passwordEncoder = passwordEncoder;
@@ -44,12 +44,13 @@ public class UsuarioService {
 
         return usuarioRepository.save(usuario);
     }
+
     public Usuario actualizarUsuario(Integer id, String nombre, String email) {
-       Usuario usuario = usuarioRepository.findById(id)
-          .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
-       usuario.setNombre(nombre);
-       usuario.setEmail(email);
-       return usuarioRepository.save(usuario); 
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        usuario.setNombre(nombre);
+        usuario.setEmail(email);
+        return usuarioRepository.save(usuario);
     }
 
     public Usuario bloquearUsuario(Integer id) {
