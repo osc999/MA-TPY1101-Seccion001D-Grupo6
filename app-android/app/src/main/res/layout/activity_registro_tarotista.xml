@@ -189,40 +189,20 @@
             android:textSize="14sp"
             android:layout_marginBottom="8dp"/>
 
-        <CheckBox
-            android:id="@+id/cbTarotGeneral"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/llEspecialidades"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tarot General"
-            android:textColor="#ffffff"/>
+            android:orientation="vertical"
+            android:layout_marginBottom="24dp"/>
 
-        <CheckBox
-            android:id="@+id/cbTarotEgipcio"
+        <TextView
+            android:id="@+id/tvCargandoEspecialidades"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tarot Egipcio"
-            android:textColor="#ffffff"/>
-
-        <CheckBox
-            android:id="@+id/cbAstrologia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Astrología"
-            android:textColor="#ffffff"/>
-
-        <CheckBox
-            android:id="@+id/cbAmor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Amor y Relaciones"
-            android:textColor="#ffffff"/>
-
-        <CheckBox
-            android:id="@+id/cbNumerologia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Numerología"
-            android:textColor="#ffffff"
+            android:text="Cargando especialidades..."
+            android:textColor="#9b59b6"
+            android:textSize="13sp"
             android:layout_marginBottom="24dp"/>
 
         <TextView

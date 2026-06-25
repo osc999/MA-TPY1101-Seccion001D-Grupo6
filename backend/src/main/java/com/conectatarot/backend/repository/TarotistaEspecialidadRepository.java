@@ -21,4 +21,6 @@ public interface TarotistaEspecialidadRepository extends JpaRepository<Tarotista
     );
 
     List<TarotistaEspecialidad> findByTarotista_Id(Integer tarotistaId);
+
+    long countByEspecialidad_Id(Integer especialidadId);
 }

@@ -109,6 +109,18 @@ class AdminActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.nav_especialidades -> {
+
+                    startActivity(
+                        Intent(
+                            this,
+                            GestionEspecialidadesActivity::class.java
+                        )
+                    )
+
+                    true
+                }
+
                 else -> true
             }
         }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etNombreEspecialidad"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Nombre"
+        android:textColor="#ffffff"
+        android:textColorHint="#9b59b6"
+        android:background="#2d1654"
+        android:padding="16dp"
+        android:inputType="textCapWords"/>
+
+    <EditText
+        android:id="@+id/etDescripcionEspecialidad"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="12dp"
+        android:hint="Descripción (opcional)"
+        android:textColor="#ffffff"
+        android:textColorHint="#9b59b6"
+        android:background="#2d1654"
+        android:padding="16dp"
+        android:gravity="top"
+        android:inputType="textMultiLine"/>
+
+    <CheckBox
+        android:id="@+id/cbActivaEspecialidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Activa"
+        android:textColor="#ffffff"
+        android:visibility="gone"/>
+
+</LinearLayout>

@@ -4,6 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.DELETE
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.Path
@@ -135,6 +136,30 @@ interface ApiService {
     suspend fun getAdminPagos(
         @Header("Authorization") token: String
     ): Response<PagosAdminResponse>
+
+    @GET("api/admin/especialidades")
+    suspend fun getAdminEspecialidades(
+        @Header("Authorization") token: String
+    ): Response<EspecialidadesAdminResponse>
+
+    @POST("api/admin/especialidades")
+    suspend fun crearEspecialidad(
+        @Header("Authorization") token: String,
+        @Body request: CrearEspecialidadRequest
+    ): Response<EspecialidadAdminMutationResponse>
+
+    @PUT("api/admin/especialidades/{id}")
+    suspend fun actualizarEspecialidad(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Body request: ActualizarEspecialidadRequest
+    ): Response<EspecialidadAdminMutationResponse>
+
+    @DELETE("api/admin/especialidades/{id}")
+    suspend fun eliminarEspecialidad(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Response<Any>
 }
 
 data class PagedData(
@@ -361,4 +386,33 @@ data class PagoAdmin(
 data class PagosAdminResponse(
     val success: Boolean,
     val data: List<PagoAdmin>?
+)
+
+data class EspecialidadAdmin(
+    val id: Int?,
+    val nombre: String?,
+    val descripcion: String?,
+    val activa: Boolean?
+)
+
+data class EspecialidadesAdminResponse(
+    val success: Boolean,
+    val data: List<EspecialidadAdmin>?
+)
+
+data class CrearEspecialidadRequest(
+    val nombre: String,
+    val descripcion: String?
+)
+
+data class ActualizarEspecialidadRequest(
+    val nombre: String?,
+    val descripcion: String?,
+    val activa: Boolean?
+)
+
+data class EspecialidadAdminMutationResponse(
+    val success: Boolean,
+    val data: EspecialidadAdmin?,
+    val message: String?
 )

@@ -21,4 +21,9 @@
         android:title="Pagos"
         android:icon="@android:drawable/ic_menu_send"/>
 
+    <item
+        android:id="@+id/nav_especialidades"
+        android:title="Especialidades"
+        android:icon="@android:drawable/ic_menu_edit"/>
+
 </menu>

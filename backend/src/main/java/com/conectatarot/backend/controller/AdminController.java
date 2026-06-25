@@ -1,11 +1,14 @@
 package com.conectatarot.backend.controller;
 
+import com.conectatarot.backend.dto.ActualizarEspecialidadRequest;
 import com.conectatarot.backend.dto.AdminDashboardDTO;
+import com.conectatarot.backend.dto.CrearEspecialidadRequest;
 import com.conectatarot.backend.entity.Tarotista;
 import com.conectatarot.backend.entity.Usuario;
 import com.conectatarot.backend.repository.SesionRepository;
 import com.conectatarot.backend.repository.TarotistaRepository;
 import com.conectatarot.backend.repository.UsuarioRepository;
+import com.conectatarot.backend.service.EspecialidadService;
 import com.conectatarot.backend.service.UsuarioService;
 import com.conectatarot.backend.service.SesionService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +29,7 @@ public class AdminController {
     private final SesionRepository sesionRepository;
     private final UsuarioService usuarioService;
     private final SesionService sesionService;
+    private final EspecialidadService especialidadService;
 
     @GetMapping("/dashboard")
     public ResponseEntity<?> dashboard() {
@@ -156,6 +160,65 @@ public class AdminController {
                 Map.of(
                         "success", true,
                         "message", "Tarotista rechazado"
+                )
+        );
+    }
+
+    @GetMapping("/especialidades")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> listarEspecialidades() {
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "success", true,
+                        "data", especialidadService.listarTodas()
+                )
+        );
+    }
+
+    @PostMapping("/especialidades")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> crearEspecialidad(
+            @RequestBody CrearEspecialidadRequest request
+    ) {
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "success", true,
+                        "data", especialidadService.crear(request),
+                        "message", "Especialidad creada"
+                )
+        );
+    }
+
+    @PutMapping("/especialidades/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> actualizarEspecialidad(
+            @PathVariable Integer id,
+            @RequestBody ActualizarEspecialidadRequest request
+    ) {
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "success", true,
+                        "data", especialidadService.actualizar(id, request),
+                        "message", "Especialidad actualizada"
+                )
+        );
+    }
+
+    @DeleteMapping("/especialidades/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> eliminarEspecialidad(
+            @PathVariable Integer id
+    ) {
+
+        especialidadService.eliminar(id);
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "success", true,
+                        "message", "Especialidad eliminada"
                 )
         );
     }

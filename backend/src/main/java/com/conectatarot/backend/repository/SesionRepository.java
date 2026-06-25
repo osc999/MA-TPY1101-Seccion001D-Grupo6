@@ -31,4 +31,6 @@ public interface SesionRepository extends JpaRepository<Sesion, Integer> {
             String estado,
             Pageable pageable
     );
+
+    boolean existsByEspecialidad_Id(Integer especialidadId);
 }
