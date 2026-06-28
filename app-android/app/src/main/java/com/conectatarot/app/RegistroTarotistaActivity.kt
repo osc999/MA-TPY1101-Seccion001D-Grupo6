@@ -1,6 +1,7 @@
 package com.conectatarot.app
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -216,11 +217,10 @@ class RegistroTarotistaActivity : AppCompatActivity() {
                     checkboxesEspecialidades.clear()
 
                     for (esp in especialidades) {
-                        val checkBox = CheckBox(this@RegistroTarotistaActivity).apply {
-                            text = esp.nombre
-                            setTextColor(getColor(android.R.color.white))
-                            tag = esp.id
-                        }
+                        val checkBox = LayoutInflater.from(this@RegistroTarotistaActivity)
+                            .inflate(R.layout.item_checkbox_registro, llEspecialidades, false) as CheckBox
+                        checkBox.text = esp.nombre
+                        checkBox.tag = esp.id
                         checkboxesEspecialidades.add(checkBox)
                         llEspecialidades.addView(checkBox)
                     }

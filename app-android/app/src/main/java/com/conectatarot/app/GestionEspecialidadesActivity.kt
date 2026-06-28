@@ -121,7 +121,7 @@ class GestionEspecialidadesActivity : AppCompatActivity() {
         val etNombre = dialogView.findViewById<EditText>(R.id.etNombreEspecialidad)
         val etDescripcion = dialogView.findViewById<EditText>(R.id.etDescripcionEspecialidad)
 
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this, R.style.ThemeOverlay_GestionEspecialidades_AlertDialog)
             .setTitle("Nueva especialidad")
             .setView(dialogView)
             .setPositiveButton("Crear") { _, _ ->
@@ -151,7 +151,7 @@ class GestionEspecialidadesActivity : AppCompatActivity() {
 
         val id = especialidad.id ?: return
 
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this, R.style.ThemeOverlay_GestionEspecialidades_AlertDialog)
             .setTitle("Editar especialidad")
             .setView(dialogView)
             .setPositiveButton("Guardar") { _, _ ->
@@ -174,7 +174,7 @@ class GestionEspecialidadesActivity : AppCompatActivity() {
     }
 
     private fun confirmarEliminar(id: Int) {
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this, R.style.ThemeOverlay_GestionEspecialidades_AlertDialog)
             .setTitle("Eliminar especialidad")
             .setMessage("¿Estás seguro de eliminar esta especialidad?")
             .setPositiveButton("Eliminar") { _, _ -> eliminarEspecialidad(id) }
