@@ -91,6 +91,19 @@ public class SesionService {
                 .collect(Collectors.toList());
     }
 
+    public List<SesionResponseDTO> obtenerMisSesionesHistorial(String email) {
+        return sesionRepository.findByUsuario_Email(email)
+                .stream()
+                .filter(s -> {
+                    LocalDateTime finSesion = s.getFecha().plusMinutes(s.getDuracionMinutos());
+                    return !finSesion.isAfter(LocalDateTime.now()) ||
+                           s.getEstado().equals("CANCELADA") ||
+                           s.getEstado().equals("RECHAZADA");
+                })
+                .map(this::convertirADTO)
+                .collect(Collectors.toList());
+    }
+
     public List<SesionResponseDTO> obtenerSesionesTarotista(String email) {
         return sesionRepository.findByTarotista_Usuario_EmailOrderByFechaAsc(email)
                 .stream()

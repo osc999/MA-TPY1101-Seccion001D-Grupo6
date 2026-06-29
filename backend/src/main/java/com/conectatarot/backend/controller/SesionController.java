@@ -47,6 +47,18 @@ public class SesionController {
         );
     }
 
+    @GetMapping("/mis-sesiones/historial")
+    public ResponseEntity<ApiResponse<List<SesionResponseDTO>>> obtenerMisSesionesHistorial(
+            Authentication authentication
+    ) {
+        List<SesionResponseDTO> sesiones =
+                sesionService.obtenerMisSesionesHistorial(authentication.getName());
+
+        return ResponseEntity.ok(
+                ApiResponse.ok("Historial de sesiones obtenido correctamente", sesiones)
+        );
+    }
+
     @GetMapping("/tarotista")
     public ResponseEntity<ApiResponse<PageResponse<SesionResponseDTO>>> obtenerSesionesTarotista(
             Authentication authentication,

@@ -49,6 +49,10 @@ class ClienteActivity : AppCompatActivity() {
                     startActivity(Intent(this, MisSesionesActivity::class.java))
                     false
                 }
+                R.id.nav_historial -> {
+                    startActivity(Intent(this, HistorialSesionesActivity::class.java))
+                    false
+                }
                 R.id.nav_perfil -> {
                     startActivity(Intent(this, PerfilActivity::class.java))
                     false
